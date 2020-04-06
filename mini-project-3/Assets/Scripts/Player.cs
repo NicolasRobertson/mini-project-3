@@ -2,17 +2,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+namespace EndlessFaller
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public class Player : IHealth
+	{
+		Health healthManager = new Health();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+		public int health
+		{
+			get
+			{
+				return healthManager.health;
+			}
+			set
+			{
+				healthManager.health = value;
+			}
+		}
+
+		public int maxHealth
+		{
+			get
+			{
+				return healthManager.maxHealth;
+			}
+			set
+			{
+				healthManager.maxHealth = value;
+			}
+		}
+
+		public Player()
+		{
+			RestoreHealth();
+		}
+
+		public void ReduceHealth()
+		{
+			health--;
+		}
+
+		public void RestoreHealth()
+		{
+
+			for (int i = health; i <= maxHealth; i++)
+			{
+				health = i;
+			}
+
+		}
+
+	}
 }
+
