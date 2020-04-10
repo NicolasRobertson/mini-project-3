@@ -8,10 +8,10 @@ public class PlayerController : MonoBehaviour
     public float minFallSpeed = -5.0f;
     public float maxFallSpeed = -20.0f;
     private float currentFallSpeed;
-    public float strafeSpeed = 1.0f;
+    public float strafeSpeed = 5.0f;
     public float downwardAcceleration = 5.0f;
-    public float horizontalDeceleration = 0.5f;
-    public float horizontalAcceleration = 0.2f;
+    public float horizontalDeceleration = 130.0f;
+    public float horizontalAcceleration = 2.0f;
 
     private Vector2 velocity;
 
@@ -36,9 +36,18 @@ public class PlayerController : MonoBehaviour
                 currentFallSpeed = minFallSpeed;
         }
 
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            velocity.x--;
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            velocity.x++;
+        }
+
         if (moveInput != 0)
         {
-            velocity.x = Mathf.MoveTowards(velocity.x, strafeSpeed * moveInput, horizontalAcceleration * Time.deltaTime);
+            velocity.x = Mathf.MoveTowards(velocity.x, strafeSpeed, horizontalAcceleration * Time.deltaTime);
             velocity.y = Mathf.MoveTowards(velocity.y, currentFallSpeed, downwardAcceleration * Time.deltaTime);
         }
         else
@@ -46,7 +55,8 @@ public class PlayerController : MonoBehaviour
             velocity.x = Mathf.MoveTowards(velocity.x, 0, horizontalDeceleration * Time.deltaTime);
             velocity.y = Mathf.MoveTowards(velocity.y, currentFallSpeed, downwardAcceleration * Time.deltaTime);
         }
-        print("Current fall speed = " + velocity.y);
+
         transform.Translate(velocity * Time.deltaTime);
     }
+
 }
