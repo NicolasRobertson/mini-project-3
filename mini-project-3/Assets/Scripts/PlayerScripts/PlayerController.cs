@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     public float horizontalDeceleration = 130.0f;
     public float horizontalAcceleration = 2.0f;
 
+    public Animator animator;
+    public bool isSpeedingUp;
+
     private Vector2 velocity;
 
     private CharacterController controller;
@@ -21,6 +24,8 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         currentFallSpeed = minFallSpeed;
+        isSpeedingUp = false;
+        print("Start");
     }
 
 
@@ -31,9 +36,17 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (currentFallSpeed == minFallSpeed)
+            {
                 currentFallSpeed = maxFallSpeed;
+                isSpeedingUp = true;
+                animator.SetBool("isSpeedingUp", isSpeedingUp);
+            }
             else
+            {
                 currentFallSpeed = minFallSpeed;
+                isSpeedingUp = false;
+                animator.SetBool("isSpeedingUp", isSpeedingUp);
+            }
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
