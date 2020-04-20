@@ -40,14 +40,12 @@ public class PlayerController : MonoBehaviour
                 currentFallSpeed = maxFallSpeed;
                 isSpeedingUp = true;
                 animator.SetBool("isSpeedingUp", isSpeedingUp);
-                print("Speeding Up! " + isSpeedingUp);
             }
             else
             {
                 currentFallSpeed = minFallSpeed;
                 isSpeedingUp = false;
                 animator.SetBool("isSpeedingUp", isSpeedingUp);
-                print("Slowing Down! " + isSpeedingUp);
             }
         }
 
