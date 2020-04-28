@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 849650622822456056}
   - component: {fileID: 849650622822456063}
+
   - component: {fileID: 849650622822456062}
   m_Layer: 0
   m_Name: Balloon
@@ -80,6 +81,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+
 --- !u!95 &849650622822456062
 Animator:
   serializedVersion: 3
