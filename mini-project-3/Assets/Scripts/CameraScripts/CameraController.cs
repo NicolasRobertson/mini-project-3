@@ -5,7 +5,7 @@ public class CameraController : MonoBehaviour
 {
     public Transform player;
     public float cameraDistance = 30.0f;
-    public float horizontalView = 120f;
+    public float horizontalView = 55f;
     public float offset = 0;
 
     void Awake()
